@@ -1,0 +1,11 @@
+@import '../node_modules/prismjs/themes/prism-tomorrow';
+@import './assets/scss/app.scss';
+
+.textNode-content{
+	line-height: 35px;
+    white-space: pre-line;
+	font-size: larger !important;
+	font-family: 'Open Sans', sans-serif !important;
+	text-align: left !important;
+}
+
