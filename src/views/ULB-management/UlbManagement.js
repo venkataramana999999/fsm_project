@@ -370,10 +370,12 @@ const ulbManagement = ({ t }) => {
     dispatch(getULBdata(payload))
   }, [])
   const store = useSelector((state) => state)
+
   const columns = store.ulbManagement.ulbHeaderData
   const ULBstore = store.ulbManagement.ulbData && store.ulbManagement.ulbData.data ? store.ulbManagement.ulbData.data.data.ulbs : []
   const lengthUlb = store.ulbManagement.ulbData.data ? store.ulbManagement.ulbData.data.totalCount : 0
   const count = Math.ceil(lengthUlb / rowsPerPage)
+
   return (
     <div>
       <Fragment>

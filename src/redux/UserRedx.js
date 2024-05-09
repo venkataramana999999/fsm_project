@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import Swal from 'sweetalert2'
 import "../views/login.css"
-// ** Axios Imports
 import axios from "../lib/ApiCall"
 const token = JSON.parse(localStorage.getItem("userData"))
 const config = {
@@ -28,14 +27,18 @@ export const getUserdata = createAsyncThunk("Usermanagement/getUserdata",
 export const getRoleList = createAsyncThunk("Usermanagement/getRoleList",
   async () => {
     const response = await axios.get(`role?sortColumnName=&sortColumnType=`, config)
+    console.log(response)
     return {
       data: response.data
     }
   }
 )
+
+
 export const getRoleListAdmin = createAsyncThunk("Usermanagement/getRoleListAdmin",
   async () => {
     const response = await axios.get(`role/?admin=true`, config)
+    console.log(response)
     return {
       data: response.data.data
     }
@@ -69,6 +72,7 @@ async (payload, { dispatch }) => {
      })
   }
 )
+
 export const EditUserDetails = createAsyncThunk("Usermanagement/addUserDetails",
 async (payload, { dispatch }) => {
      await axios.put(`user`, payload, config).then((response) => {

@@ -19,7 +19,7 @@ const RoleListing = ({ open, handleModal, t }) => {
     const [RoleName, setRoleName] = useState("")
     // const handleModal = () => setModal(!modal)
     const handleEditRole = (rooleId, accessData, role) => {
-        console.log(rooleId)
+
         switch ((accessData !== undefined && accessData === true) || (accessData !== null && accessData === true)) {
 
             case !!accessData && accessData["IsMobileAppAccess"] === true && accessData["IsWebAppAccess"] === false:

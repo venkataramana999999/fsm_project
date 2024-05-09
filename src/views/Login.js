@@ -121,7 +121,9 @@ const Login = (props) => {
     if (Object.values(data).every(field => field.length > 0)) {
       axios.post('auth/login', { email: data.email, password: data.password })
         .then(res => {
+          console.log(res)
           const data = { ...res.data.data }
+          console.log(data)
           localStorage.setItem("role", data.roleName)
           dispatch(handleLogin(data))
           navigate(getHomeRouteForLoggedInUser(data.roleName))
@@ -387,7 +389,7 @@ const Login = (props) => {
                 <ModalBody>
                   {/* <Form className='auth-login-form mt-2' > */}
                   <div className="d-flex flex-column">
-                    <Form className='auth-login-form mt-2' >
+                    <Form className='auth-login-form mt-2' onSubmit={handleSubmit(handleGenrateOtp)}>
                       <div className='mb-1'>
                         <Label className='form-label' for='login-email'>
                           {t("phoneNumber")} <span style={{ color: "red" }}>*</span>
@@ -408,7 +410,7 @@ const Login = (props) => {
                       <div style={{ color: "red" }}>{PhoneNumberEnter.length === 10 ? "" : PhoneNumberEnter.length > 10 ? t("phoperContact") : PhoneNumberEnter.length === 0 ? "" : PhoneNumberEnter.length < 10 ? t("phoperContact") : ""}</div>
                       {GenerateOtpV === false ? <>
                         <div style={{ color: "green" }}>{SuccessMsg}</div>
-                        <Button className="btn-style" color="success" style={{ marginBottom: '10px', float: "right" }} onClick={handleGenrateOtp}>
+                        <Button className="btn-style" type="submit" color="success" style={{ marginBottom: '10px', float: "right" }} >
                           Generate OTP
                         </Button></> : ""}
                     </Form>
@@ -449,6 +451,7 @@ const Login = (props) => {
                           onChange={e => setotp3(e.target.value)}
                           tabIndex="3" maxLength="1"
                           onKeyUp={e => inputfocus(e)}
+                          
 
                         />
                         <Input

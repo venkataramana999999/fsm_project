@@ -402,7 +402,6 @@ const userListing = ({t}) => {
                   <option value={75}>75</option>
                   <option value={100}>100</option>
                 </Input>
-
                 <ReactPaginate
                   previousLabel={''}
                   nextLabel={''}

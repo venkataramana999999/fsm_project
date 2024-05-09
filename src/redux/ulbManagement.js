@@ -10,6 +10,7 @@ const config = {
 export const getUlbHeader = createAsyncThunk("ULBmanagement/getUlbHeader",
   async () => {
     const response = await axios.get(`ulb/headers`, config)
+
     return {
       data: response.data.data
     }
@@ -17,7 +18,9 @@ export const getUlbHeader = createAsyncThunk("ULBmanagement/getUlbHeader",
 )
 export const getULBdata = createAsyncThunk("ULBmanagement/getULBdata",
   async (payload) => {
+
     const response = await axios.get(payload.field === "all" || payload.field === "sorting" ? `ulb?name=${payload.query}&sortColumnName=${payload.sortingName}&sortColumnType=${payload.sortingValue}&limit=${payload.limit}&page=${payload.page}` : payload.field === "search" ? `ulb?name=${payload.query}&limit=${payload.limit}&page=${payload.page}` : "ulb", config)
+
     return {
       data: response.data
     }
